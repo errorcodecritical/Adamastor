@@ -1,9 +1,14 @@
-    Even as I spoke, an immense shape
-    Materialised in the night air,
-    Grotesque and enormous stature
-    With heavy jowls, and an unkempt beard
-    Scowling from shrunken, hollow eyes
-    Its complexion earthy and pale,
-    Its hair grizzled and matted with clay,
-    Its mouth coal black, teeth yellow with decay.
-    — Camões, The Lusiads Book V
+#Adamastor
+---
+A simple Node.js utility to yoink models from Sketchfab.
+
+Prerequesites:
+- Google Chrome / Chromium;
+- Node.js
+- Puppeteer (npm);
+
+Execution:
+- Run `node ./adamastor.js [sketchfab model url]`;
+- Download results to `./output`;
+
+This is to serve exclusively as an example to how poorly secured Sketchfab's web viewer is. Use this utility at your own discretion.
