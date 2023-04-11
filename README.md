@@ -1,5 +1,5 @@
 # Adamastor
----
+
 A simple Node.js utility to yoink models from Sketchfab.
 
 Prerequesites:
