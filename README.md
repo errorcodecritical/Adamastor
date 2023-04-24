@@ -11,4 +11,6 @@ Execution:
 - Run `node ./adamastor.js [sketchfab model url]`
 - Download results to `./output`
 
+[Note]: This doesn't yet work for models with animations. 
+
 This is to serve exclusively as an example to how poorly secured Sketchfab's web viewer is. Use this utility at your own discretion.
