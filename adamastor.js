@@ -32,15 +32,17 @@ const minify = it => it.replace(/\s+/g, ' ');
                 const response_intercept = await fetch(request_intercept);
 
                 let body = await response_intercept.text();
-                let index1 = body.indexOf('},g}const v=function(t,e,i,r,n,a)');
-                let index2 = body.indexOf('var s=this._getValidPrimitives();s[r(357)]');
+                let index1 = body.search(/\},.\}const .=function\(.,.,.,.,.,.\)/); //body.indexOf('},g}const v=function(t,e,i,r,n,a)');
+                let index2 = body.search(/var .=.,.=.\[.\(\d*\)\]\(\),.=.\.getInstanceID\(\);/); //body.indexOf('var r=c,e=t[r(392)](),n=e.getInstanceID();');
 
                 if (index1 != -1) {
                     const [prefix, suffix] = split(body, index1);
                     body = prefix + minify(source_texture) + suffix;
+                    console.log("Intercepted texture source.");
                 } else if (index2 != -1) {
                     const [prefix, suffix] = split(body, index2);
                     body = prefix + minify(source_geometry) + suffix;
+                    console.log("Intercepted geometry source.");
                 }
 
                 request.respond({
