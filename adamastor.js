@@ -33,7 +33,7 @@ const minify = it => it.replace(/\s+/g, ' ');
 
                 let body = await response_intercept.text();
                 let index1 = body.search(/\},.\}const .=function\(.,.,.,.,.,.\)/); //body.indexOf('},g}const v=function(t,e,i,r,n,a)');
-                let index2 = body.search(/var .=.,.=.\[.\(\d*\)\]\(\),.=.\.getInstanceID\(\);/); //body.indexOf('var r=c,e=t[r(392)](),n=e.getInstanceID();');
+                let index2 = body.indexOf('this._viewer.requestRedraw(),this._viewer.frame()'); // body.search(/var .=.,.=.\[.\(\d*\)\]\(\),.=.\.getInstanceID\(\);/);
 
                 if (index1 != -1) {
                     const [prefix, suffix] = split(body, index1);
@@ -53,6 +53,10 @@ const minify = it => it.replace(/\s+/g, ' ');
             } else {
                 request.continue();
             }
+        });
+
+        page.exposeFunction('adm_log', async(data) => {
+            console.log(data);
         });
     
         page.exposeFunction('adm_download', async(filename, data) => {
